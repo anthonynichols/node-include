@@ -19,11 +19,7 @@
   "bugs": {
     "url": "https://github.com/anthonynichols/node-include/issues"
   },
-  "main": "./app/app.js",
-  "scripts": {
-    "start": "node app/app.js"
-  },
-  "readme": "# node-include\nRequire local files relative to the root of your node project.\n# usage\n#### without include\n```js\nvar foo = require('../../../path/to/foo');\n```\n#### with include\n```js\nvar include = require('include');\nvar foo = include('path/to/foo');\n```\n# license\nMIT",
+  "main": "index.js",
   "readmeFile": "README.md",
   "license": "MIT"
 }
