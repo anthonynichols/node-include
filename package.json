@@ -1,6 +1,6 @@
 {
   "name": "include",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Require local files relative to the root of your node project.",
   "keywords": [
     "include",
@@ -23,6 +23,7 @@
   "scripts": {
     "start": "node app/app.js"
   },
+  "readme": "# node-include\nRequire local files relative to the root of your node project.\n# usage\n#### without include\n```js\nvar foo = require('../../../path/to/foo');\n```\n#### with include\n```js\nvar include = require('include');\nvar foo = include('path/to/foo');\n```\n# license\nMIT",
   "readmeFile": "README.md",
   "license": "MIT"
 }
