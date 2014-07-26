@@ -1,0 +1,28 @@
+{
+  "name": "include",
+  "version": "0.1.0",
+  "description": "Require local files relative to the root of your node project.",
+  "keywords": [
+    "include",
+    "require"
+  ],
+  "author": {
+    "name": "Anthony Nichols",
+    "email": "hi@anthonynichols.me",
+    "url": "https://github.com/anthonynichols"
+  },
+  "homepage": "https://github.com/anthonynichols/node-include",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anthonynichols/node-include.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anthonynichols/node-include/issues"
+  },
+  "main": "./app/app.js",
+  "scripts": {
+    "start": "node app/app.js"
+  },
+  "readmeFile": "README.md",
+  "license": "MIT"
+}
