@@ -1,29 +1,52 @@
-var fs = require('fs'),
-    path = require('path')
+"use strict";
 
-module.exports = function (target) {
-  var directory = path.dirname(module.parent.filename),
-      rootDirectory = locatePackageJson(directory)
+// Node
+var lstatSync = require("fs").lstatSync;
+var path = require("path");
 
-  return requireFromRoot(target, rootDirectory)
-}
+/**
+ * Attempts to find the project root by finding the nearest package.json file.
+ * @private
+ * @param {String} currentPath - Path of the file doing the including.
+ * @return {String?}
+ */
+function findProjectRoot(currentPath) {
+  var result = undefined;
 
-function locatePackageJson(directory) {
   try {
-    fs.readFileSync(path.join(directory, 'package.json'))
+    var packageStats = lstatSync(path.join(currentPath, "package.json"));
 
-    return directory
-  } catch (e) {}
-
-  if (directory === path.resolve('/')) {
-    return
-  } else {
-    directory = path.join(directory, '..')
-
-    return locatePackageJson(directory)
+    if (packageStats.isFile()) {
+      result = currentPath;
+    }
+  } catch (error) {
+    if (currentPath !== path.resolve("/")) {
+      result = findProjectRoot(path.join(currentPath, ".."));
+    }
   }
+
+  return result;
 }
 
-function requireFromRoot(target, directory) {
-  return require(path.join(directory, target))
+/**
+ * Creates the include function wrapper around <code>require</code> based on the path of the calling file and not the
+ * install location of the module.
+ * @param {String} callerPath - Path of the calling file.
+ * @return {Function}
+ * @example
+ *
+ * var include = require("include")(__dirname);
+ *
+ * var projectFn = include("src/method");
+ */
+function createInclude(callerPath) {
+  return function (target) {
+    var projectRoot = findProjectRoot(callerPath);
+
+    return projectRoot ?
+      require(path.join(projectRoot, target)) :
+      require(target);
+  };
 }
+
+module.exports = createInclude;
