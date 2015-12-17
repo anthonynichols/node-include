@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 // Node
-var lstatSync = require("fs").lstatSync;
-var path = require("path");
+var lstatSync = require('fs').lstatSync;
+var path = require('path');
 
 /**
  * Attempts to find the project root by finding the nearest package.json file.
@@ -14,14 +14,14 @@ function findProjectRoot(currentPath) {
   var result = undefined;
 
   try {
-    var packageStats = lstatSync(path.join(currentPath, "package.json"));
+    var packageStats = lstatSync(path.join(currentPath, 'package.json'));
 
     if (packageStats.isFile()) {
       result = currentPath;
     }
   } catch (error) {
-    if (currentPath !== path.resolve("/")) {
-      result = findProjectRoot(path.join(currentPath, ".."));
+    if (currentPath !== path.resolve('/')) {
+      result = findProjectRoot(path.join(currentPath, '..'));
     }
   }
 
@@ -35,9 +35,9 @@ function findProjectRoot(currentPath) {
  * @return {Function}
  * @example
  *
- * var include = require("include")(__dirname);
+ * var include = require('include')(__dirname);
  *
- * var projectFn = include("src/method");
+ * var projectFn = include('src/method');
  */
 function createInclude(callerPath) {
   return function (target) {

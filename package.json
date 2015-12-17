@@ -1,6 +1,6 @@
 {
   "name": "include",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Require local files relative to the root of your node project.",
   "keywords": [
     "include",
@@ -19,7 +19,14 @@
   "bugs": {
     "url": "https://github.com/anthonynichols/node-include/issues"
   },
-  "main": "index.js",
+  "main": "include.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "readmeFile": "README.md",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
 }

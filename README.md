@@ -2,9 +2,17 @@
 
 Require local files relative to the root of your node project.
 
+# install
+
+npm install include
+
 # usage
 
-#### without include
+```js
+var include = require('include')
+```
+
+#### before
 
 ```js
 var foo = require('../../../path/to/foo');
@@ -13,8 +21,6 @@ var foo = require('../../../path/to/foo');
 #### with include
 
 ```js
-var include = require('include');
-
 var foo = include('path/to/foo');
 ```
 
