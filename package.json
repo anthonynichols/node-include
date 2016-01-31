@@ -1,6 +1,6 @@
 {
   "name": "include",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Require local files relative to the root of your node project.",
   "keywords": [
     "include",
