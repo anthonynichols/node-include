@@ -1,6 +1,6 @@
 # node-include
 
-Require local files relative to the root of your node project.
+Require local files relative to the path provided at require.
 
 # install
 
@@ -9,10 +9,10 @@ npm install include
 # usage
 
 ```js
-var include = require('include')
+var include = require('include')(__dirname);
 ```
 
-#### before
+#### without include
 
 ```js
 var foo = require('../../../path/to/foo');
